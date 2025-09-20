@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { assets } from "../assets/assets";
 import { Link, useNavigate } from "react-router-dom";
+import App from "../App";
+import { Appcontext } from "../context/AppContext";
 
 const Navbar = () => {
   
-
+  const {user} = useContext(Appcontext)
   const navigate = useNavigate();
 
   return (
@@ -16,7 +18,7 @@ const Navbar = () => {
       <div>
         {user ? (
           <div className="flex items-center gap-2 sm:gap-5">
-            <button
+            <button onClick={()=>navigate('/buy')}
               className="
             flex items-center gap-2 
             bg-blue-100 
@@ -26,7 +28,7 @@ const Navbar = () => {
             >
               <img className="w-5" src={assets.credit_star} alt="" />
               <p className="text-xs sm:text-sm font-medium text-gray-600">
-                Credits left
+                Credits left : 50
               </p>
             </button>
             <p className="text-gray-600 max-sm:hidden PI-4">Hi, Mathi</p>
